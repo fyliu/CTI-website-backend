@@ -1,6 +1,8 @@
+name: Update Contributors
 on:
-  schedule: # Times are in UTC (PST is UTC-8:00)
-    - cron: '*/15 * * * *' # every day at 2:41am PST
+  push:
+  #schedule: # Times are in UTC (PST is UTC-8:00)
+  #  - cron: '*/15 * * * *' # every day at 2:41am PST
 
 jobs:
   update_contributors:
@@ -8,10 +10,8 @@ jobs:
     environment: incubator-staging
     name: Update CTI contributors
     steps:
-      - name: Checkout branch containing the action
+      - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: 1004-run-update-contributor-from-github-action
       - name: Update Contributors
         id: update_contributors
         uses: ./.github/actions/update-contributors
